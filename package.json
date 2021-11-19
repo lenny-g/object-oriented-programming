@@ -1,0 +1,26 @@
+{
+  "name": "object-oriented-programming",
+  "version": "1.0.0",
+  "description": "A Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --verbose --coverage",
+    "test:watch": "jest --verbose --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenny-g/Object-oriented-programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lenny-g/Object-oriented-programming/issues"
+  },
+  "homepage": "https://github.com/lenny-g/Object-oriented-programming#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0",
+    "jest": "^27.3.1"
+  }
+}
