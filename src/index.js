@@ -19,10 +19,11 @@ class Employee {
 class Manager extends Employee {
     constructor(officeNumber) {
         this.officeNumber = officeNumber;
+        
+
+
+        super(Employee.arguments);
         const role = "Manager";
-
-
-        super({ name, id, email, role });
       
     }
     getOfficeNumber() {
@@ -34,8 +35,9 @@ class Manager extends Employee {
 class Engineer extends Employee {
     constructor(github) {
         this.github = github;
-        const role = "Engineer";
+
         super({ name, id, email, role });
+        const role = "Engineer";
     }
     getGithub();
     getRole();
@@ -44,9 +46,10 @@ class Engineer extends Employee {
 class Intern extends Employee {
     constructor(school) {
         this.school = school;
-        const role = "Intern"
+        
 
         super({ name, id, email, role });
+        const role = "Intern";
     }
     getSchool();
     getRole();
