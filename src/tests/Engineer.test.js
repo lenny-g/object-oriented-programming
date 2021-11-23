@@ -1,10 +1,11 @@
 describe("getRole", () => {
-  test("Should return a string", () => {
-    const expected = "";
-  });
-}),
-  describe("getGitHub", () => {
-    test("Should return a string ", () => {
-      const expected = "";
-    });
-  });
+  test("should be an instance of Manager", () => { });
+
+  test("should return the expected name", () => { });
+ 
+  test("should return the expected id", () => { });
+  
+  test("should return the expected email", () => { });
+
+  test("should return the ", () => { })
+};

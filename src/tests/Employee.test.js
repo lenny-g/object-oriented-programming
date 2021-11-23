@@ -1,22 +1,11 @@
-const { test } = require("picomatch");
+describe("getRole", () => {
+  test("should be an instance of Manager", () => { });
 
-describe("getName", () => {
-  test("Should return a string ", () => {
-    const expected = "";
-  });
-}),
-  describe("getId", () => {
-    test("Should return a string", () => {
-      const expected = "";
-    });
-  }),
-  describe("getEmail", () => {
-    test("Should return a string", () => {
-      const expected = "";
-    });
-  }),
-  describe("getRole", () => {
-    test("Should return a string", () => {
-      const expected = "";
-    });
-  });
+  test("should return the expected name", () => { });
+ 
+  test("should return the expected id", () => { });
+  
+  test("should return the expected email", () => { });
+
+  test("should return the ", () => { })
+};

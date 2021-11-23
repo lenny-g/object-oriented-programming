@@ -1,8 +1,11 @@
 describe("getRole", () => {
-  test("Should return a string", () => {
-    const expected = "";
-  });
-}),
-  describe("getOfficeNumber", () => {
-    test("Should return a numerical value", () => {});
-  });
+  test("should be an instance of Manager", () => { });
+
+  test("should return the expected name", () => { });
+ 
+  test("should return the expected id", () => { });
+  
+  test("should return the expected email", () => { });
+
+  test("should return the ", () => { })
+};
