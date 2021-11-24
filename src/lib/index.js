@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 
-const writeToFile()
+const writeToFile( )
 
 const generateHTML() => {
     map
@@ -8,12 +8,3 @@ const generateHTML() => {
     
 }
 
-answers = {
-    teamname: "",
-    employees: [
-        name:
-        email:
-        id:
-        role: 
-    ]
-}

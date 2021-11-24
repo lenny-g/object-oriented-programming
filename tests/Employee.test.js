@@ -1,5 +1,5 @@
-describe("getRole", () => {
-  test("should be an instance of Manager", () => { });
+describe("Employee Class", () => {
+  test("should be an instance of Employee", () => { });
 
   test("should return the expected name", () => { });
  
