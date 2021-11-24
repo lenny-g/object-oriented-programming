@@ -1,6 +1,6 @@
 :root {
   --yale-blue: #064789ff;
-  --steel-blue: #427aa1ff;
+  --steel-blue: rgb(171, 211, 240);
   --alice-blue: #ebf2fa;
   --maximum-green: #679436ff;
   --acid-green: #a5be00ff;
@@ -24,7 +24,7 @@ body {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  background-color: var(--steel-blue);
   border-radius: 0.3rem;
 }
 
@@ -38,4 +38,5 @@ body {
 .card {
   padding: 10px;
   margin: 20px;
+  background: var(--steel-blue);
 }
