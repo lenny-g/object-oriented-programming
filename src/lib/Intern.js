@@ -10,6 +10,7 @@ class Intern extends Employee {
   getRole() {
     return "intern";
   }
+  generateCard() {}
 }
 
 module.exports = Intern;

@@ -1,7 +1,7 @@
 const Employee = require("./Employee");
 
 class Engineer extends Employee {
-  constructor(github, ...employee) {
+  constructor({ github, ...employee }) {
     super(employee);
     this.github = github;
   }
@@ -11,6 +11,8 @@ class Engineer extends Employee {
   getRole() {
     return "Engineer";
   }
+
+  generateCard() {}
 }
 
 module.exports = Engineer;
