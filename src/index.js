@@ -62,11 +62,11 @@ const questions = [
   },
 ];
 
-// const writeToFile = (fileName, data) => {
-//   fs.writeFile(fileName, data, (err) =>
-//     err ? console.error(err) : console.log("Success!")
-//   );
-// };
+const writeToFile = (fileName, data) => {
+  fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log("Success!")
+  );
+};
 
 const getOtherInfo = (employee) => {
   if (employee.getRole() === "Manager") {
@@ -81,7 +81,7 @@ const getOtherInfo = (employee) => {
 };
 
 const constructCard = (each) => {
-  const employeeCard = ` <div class="card" style="width: 18rem">
+  const employeeCard = `<div class="card" style="width: 18rem">
   <div class="card-body">
     <h5 class="card-name">${each.getName()}</h5>
     <h5 class="card-role">${each.getRole()}</h5>
@@ -92,8 +92,7 @@ const constructCard = (each) => {
     <li class="list-group-item other">${getOtherInfo(each)}</li>
   </ul>
 </div>`;
-
-  $(".card-container").append(employeeCard);
+  return employeeCard;
 };
 
 const generateHTML = (employees, teamNameAnswer) => {
@@ -131,15 +130,31 @@ const generateHTML = (employees, teamNameAnswer) => {
     <body>
       <!-- jumbotron -->
       <div class="bg-light p-5 rounded-lg">
-        <h1 class="display-4 text-center">MEET THE TEAM</h1>
-        <h2 class="display-5 text-center">${teamNameAnswer}</h2>
+        <h1 class="display-4 text-center">MEET THE TEAM:</h1>
+        <h2 class="display-5 text-center">${teamNameAnswer.teamName.toUpperCase()}</h2>
       </div>
-  
-      <!-- team member cards -->
-      <div class="card-container d-flex">
-      ${employees.map(constructCard).join("")};
-      </div>
-      
+
+      <section>
+        <h2 class="text-center mt-1">Manager</h2>
+        <div class="card-container d-flex">
+        ${employees.managers.map(constructCard).join("")}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-center">Engineer</h2>
+        <div class="card-container d-flex">
+        ${employees.engineers.map(constructCard).join("")}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-center">Intern</h2>
+        <div class="card-container d-flex">
+        ${employees.interns.map(constructCard).join("")}
+        </div>
+      </section>
+    
       <!-- Footer -->
       <footer class="page-footer font-small blue">
         <!-- Copyright -->
@@ -213,7 +228,7 @@ const init = async () => {
   const employees = { managers, engineers, interns };
   console.log(employees);
   const html = generateHTML(employees, teamNameAnswer);
-  writeToFile("../dist/index.html", html);
+  writeToFile("./dist/index.html", html);
 };
 
 init();
