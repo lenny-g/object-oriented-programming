@@ -68,21 +68,35 @@ const questions = [
 //   );
 // };
 
-const constructCard = () => {
-  ` <div class="card" style="width: 18rem">
-  <div class="card-body">
-    <h5 class="card-name">${answers.name}</h5>
-    <h5 class="card-role">${answers.role}</h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item id">Id: ${answers.id}</li>
-    <li class="list-group-item email">Email: ${answers.email}</li>
-    <li class="list-group-item other">Other</li>
-  </ul>
-</div>`;
+const getOtherInfo = (employee) => {
+  if (employee.getRole() === "Manager") {
+    return `Office Number: ${employee.getOfficeNumber()}`;
+  }
+  if (employee.getRole() === "Engineer") {
+    return `Github: ${employee.getGithub()}`;
+  }
+  if (employee.getRole() === "Intern") {
+    return `School: ${employee.getSchool()}`;
+  }
 };
 
-const generateHTML = () => {
+const constructCard = (each) => {
+  const employeeCard = ` <div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-name">${each.getName()}</h5>
+    <h5 class="card-role">${each.getRole()}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item id">Id: ${each.getId()}</li>
+    <li class="list-group-item email">Email: ${each.getEmail()}</li>
+    <li class="list-group-item other">${getOtherInfo(each)}</li>
+  </ul>
+</div>`;
+
+  $(".card-container").append(employeeCard);
+};
+
+const generateHTML = (employees, teamNameAnswer) => {
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -118,13 +132,14 @@ const generateHTML = () => {
       <!-- jumbotron -->
       <div class="bg-light p-5 rounded-lg">
         <h1 class="display-4 text-center">MEET THE TEAM</h1>
-        <h2 class="display-5 text-center">${teamName}</h2>
+        <h2 class="display-5 text-center">${teamNameAnswer}</h2>
       </div>
   
       <!-- team member cards -->
       <div class="card-container d-flex">
-       
-  
+      ${employees.map(constructCard).join("")};
+      </div>
+      
       <!-- Footer -->
       <footer class="page-footer font-small blue">
         <!-- Copyright -->
@@ -155,7 +170,7 @@ const init = async () => {
   const engineers = [];
   const interns = [];
 
-  const teamNameAnswers = await inquirer.prompt(mainQuestion);
+  const teamNameAnswer = await inquirer.prompt(mainQuestion);
 
   while (inProgress) {
     const answers = await inquirer.prompt(questions);
@@ -197,8 +212,8 @@ const init = async () => {
 
   const employees = { managers, engineers, interns };
   console.log(employees);
-  // const html = generateHTML(employees);
-  // writeToFile("../dist/index.html", html);
+  const html = generateHTML(employees, teamNameAnswer);
+  writeToFile("../dist/index.html", html);
 };
 
 init();
