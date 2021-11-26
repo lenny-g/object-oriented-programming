@@ -4,20 +4,21 @@ const fs = require("fs");
 const { Manager, Engineer, Intern } = require("./lib");
 const { userInfo } = require("os");
 
-// team name
-const mainQuestion = [
-  {
-    type: "input",
-    name: "teamName",
-    message: "What is your teams name?",
-  },
-];
-
 // function to validate that a number has been used for the id and office number
-// const validateInput
+const validateInput = (input) => {
+  if (!input) {
+    return "Please enter a valid response";
+  } else {
+    return;
+  }
+};
 
 const validateNumericalValue = (id) => {
   if (isNaN(id)) {
+    return "Please enter a numerical value";
+  }
+
+  if (!id) {
     return "Please enter a numerical value";
   } else {
     return true;
@@ -28,10 +29,23 @@ const validateNumericalValue = (id) => {
 const validateEmail = (email) => {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return true;
+  }
+  if (!email) {
+    return "Please enter a valid email";
   } else {
     return "Please enter a valid email";
   }
 };
+
+// team name
+const mainQuestion = [
+  {
+    type: "input",
+    name: "teamName",
+    message: "What is your teams name?",
+    validate: validateInput,
+  },
+];
 
 // team member questions
 const questions = [
@@ -39,9 +53,10 @@ const questions = [
     type: "input",
     name: "name",
     message: "What is your name?",
+    validate: validateInput,
   },
   {
-    type: "number",
+    type: "input",
     name: "id",
     message: "What is your id?",
     validate: validateNumericalValue,
@@ -63,7 +78,7 @@ const questions = [
     ],
   },
   {
-    type: "number",
+    type: "input",
     name: "officeNumber",
     message: "What is your office number?",
     validate: validateNumericalValue,
@@ -74,6 +89,7 @@ const questions = [
     name: "github",
     message: "What is your github username?",
     when: ({ role }) => role === "engineer",
+    validate: validateInput,
   },
   {
     type: "input",
