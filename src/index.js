@@ -1,8 +1,10 @@
+// import external and internal packages
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { Manager, Engineer, Intern } = require("./lib");
 const { userInfo } = require("os");
 
+// team name
 const mainQuestion = [
   {
     type: "input",
@@ -10,6 +12,9 @@ const mainQuestion = [
     message: "What is your teams name?",
   },
 ];
+
+// function to validate that a number has been used for the id and office number
+// const validateInput
 
 const validateNumericalValue = (id) => {
   if (isNaN(id)) {
@@ -19,6 +24,7 @@ const validateNumericalValue = (id) => {
   }
 };
 
+// validation function to make sure someone has used an actual email for the email
 const validateEmail = (email) => {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     return true;
@@ -27,6 +33,7 @@ const validateEmail = (email) => {
   }
 };
 
+// team member questions
 const questions = [
   {
     type: "input",
@@ -81,12 +88,14 @@ const questions = [
   },
 ];
 
+// render in html function
 const writeToFile = (fileName, data) => {
   fs.writeFile(fileName, data, (err) =>
     err ? console.error(err) : console.log("Success!")
   );
 };
 
+// to get either office number/ github/ school depending on the type of employee
 const getOtherInfo = (employee) => {
   if (employee.getRole() === "Manager") {
     return `Office Number: ${employee.getOfficeNumber()}`;
@@ -99,11 +108,23 @@ const getOtherInfo = (employee) => {
   }
 };
 
+const constructIcon = (employee) => {
+  if (employee.getRole() === "Manager") {
+    return `<i class="fas fa-mug-hot"></i> `;
+  }
+  if (employee.getRole() === "Engineer") {
+    return `<i class="fas fa-tools"></i>`;
+  }
+  if (employee.getRole() === "Intern") {
+    return `<i class="fas fa-graduation-cap"></i>`;
+  }
+};
+
 const constructCard = (each) => {
   const employeeCard = `<div class="card" style="width: 18rem">
   <div class="card-body">
-    <h5 class="card-name">${each.getName()}</h5>
-    <h5 class="card-role">${each.getRole()}</h5>
+   <h5 class="card-name">${each.getName()}</h5>
+   ${constructIcon(each)} <h5 class="card-role">${each.getRole()}</h5>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">Id: ${each.getId()}</li>
@@ -122,7 +143,14 @@ const generateHTML = (employees, teamNameAnswer) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Meet the team!</title>
-      <!-- googlefonts stylesheet -->
+      <!-- fontAwesome stylesheet -->
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+        crossorigin="anonymous"
+      />
+      <!-- googleFonts stylesheet -->
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link

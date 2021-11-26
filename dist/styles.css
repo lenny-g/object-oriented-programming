@@ -40,3 +40,14 @@ body {
   margin: 20px;
   background: var(--steel-blue);
 }
+
+.fas {
+  float: left;
+  font-weight: 900;
+  line-height: 1.2;
+  vertical-align: bottom;
+}
+
+h5 {
+  margin-left: 40px;
+}
