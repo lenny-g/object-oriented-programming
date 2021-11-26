@@ -1,40 +1,32 @@
 const Manager = require("../src/lib/Manager");
 
 describe("Manager class", () => {
-  const mockManager = {
-    name: "Bob Smith",
-    id: 1234,
-    email: "hello@hi.com",
-    officeNumber: 378778378,
-  };
-  const actual = new Manager(mockManager);
-
   test("should be an instance of Manager", () => {
-    const actual = new Manager(mockManager);
+    const actual = new Manager();
     expect(actual).toBeInstanceOf(Manager);
   });
 
   test("should return the expected name", () => {
-    const name = actual.getName();
-    const expected = mockManager.name;
+    const name = Manager.getName();
+    const expected = Manager.name;
     expect(name).toEqual(expected);
   });
 
   test("should return the expected id", () => {
-    const id = actual.getId();
-    const expected = mockManager.id;
+    const id = Manager.getId();
+    const expected = Manager.id;
     expect(id).toEqual(expected);
   });
 
   test("should return the expected email", () => {
-    const email = actual.getEmail();
-    const expected = mockManager.email;
+    const email = Manager.getEmail();
+    const expected = Manager.email;
     expect(email).toEqual(expected);
   });
 
   test("should return the office number ", () => {
-    const officeNumber = actual.getOfficeNumber();
-    const expected = mockManager.officeNumber;
+    const officeNumber = Manager.getOfficeNumber();
+    const expected = Manager.officeNumber;
     expect(officeNumber).toEqual(expected);
   });
 });

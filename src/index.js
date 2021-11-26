@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { Manager, Engineer, Intern } = require("./lib");
+const { userInfo } = require("os");
 
 const mainQuestion = [
   {
@@ -9,6 +10,22 @@ const mainQuestion = [
     message: "What is your teams name?",
   },
 ];
+
+const validateNumericalValue = (id) => {
+  if (isNaN(id)) {
+    return "Please enter a numerical value";
+  } else {
+    return true;
+  }
+};
+
+const validateEmail = (email) => {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+    return true;
+  } else {
+    return "Please enter a valid email";
+  }
+};
 
 const questions = [
   {
@@ -20,11 +37,13 @@ const questions = [
     type: "number",
     name: "id",
     message: "What is your id?",
+    validate: validateNumericalValue,
   },
   {
     type: "input",
     name: "email",
     message: "What is your email?",
+    validate: validateEmail,
   },
   {
     type: "list",
@@ -40,6 +59,7 @@ const questions = [
     type: "number",
     name: "officeNumber",
     message: "What is your office number?",
+    validate: validateNumericalValue,
     when: ({ role }) => role === "manager",
   },
   {
@@ -48,7 +68,6 @@ const questions = [
     message: "What is your github username?",
     when: ({ role }) => role === "engineer",
   },
-
   {
     type: "input",
     name: "school",
@@ -73,7 +92,7 @@ const getOtherInfo = (employee) => {
     return `Office Number: ${employee.getOfficeNumber()}`;
   }
   if (employee.getRole() === "Engineer") {
-    return `Github: ${employee.getGithub()}`;
+    return `Github: <a href="https://github.com/${employee.getGithub()}"> ${employee.getGithub()} </a>`;
   }
   if (employee.getRole() === "Intern") {
     return `School: ${employee.getSchool()}`;
@@ -88,7 +107,7 @@ const constructCard = (each) => {
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item id">Id: ${each.getId()}</li>
-    <li class="list-group-item email">Email: ${each.getEmail()}</li>
+    <li class="list-group-item email">Email: <a href="mailto:${each.getEmail()}">${each.getEmail()}</a></li>
     <li class="list-group-item other">${getOtherInfo(each)}</li>
   </ul>
 </div>`;
@@ -142,14 +161,14 @@ const generateHTML = (employees, teamNameAnswer) => {
       </section>
 
       <section>
-        <h2 class="text-center">Engineer</h2>
+        <h2 class="text-center">Engineers</h2>
         <div class="card-container d-flex">
         ${employees.engineers.map(constructCard).join("")}
         </div>
       </section>
 
       <section>
-        <h2 class="text-center">Intern</h2>
+        <h2 class="text-center">Interns</h2>
         <div class="card-container d-flex">
         ${employees.interns.map(constructCard).join("")}
         </div>
