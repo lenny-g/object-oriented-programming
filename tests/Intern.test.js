@@ -1,6 +1,13 @@
 const Intern = require("../src/lib/Intern");
 
 describe("Intern Class", () => {
+  const intern = new Intern({
+    name: "Pete",
+    id: "1234",
+    email: "pete@pete.com",
+    school: "Finham Park",
+  });
+
   test("should be an instance of Intern", () => {
     const expected = "Intern";
     const instance = new Intern("Intern");
@@ -9,26 +16,26 @@ describe("Intern Class", () => {
   });
 
   test("should return the expected name", () => {
-    const name = new Intern.getName();
-    const expected = Intern.name;
-    expect(name).toEqual(expected);
+    const expected = "Pete";
+    const actual = intern.getName("Pete");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected id", () => {
-    const id = new Intern.getId();
-    const expected = Intern.id;
-    expect(id).toEqual(expected);
+    const expected = "1234";
+    const actual = intern.getId("1234");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected email", () => {
-    const email = new Intern.getEmail();
-    const expected = Intern.email;
-    expect(email).toEqual(expected);
+    const expected = "pete@pete.com";
+    const actual = intern.getEmail("pete@pete.com");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the school name ", () => {
-    const schoolName = new Intern.getSchool();
-    const expected = Intern.school;
-    expect(schoolName).toEqual(expected);
+    const expected = "Finham Park";
+    const actual = intern.getSchool("Finham Park");
+    expect(actual).toEqual(expected);
   });
 });

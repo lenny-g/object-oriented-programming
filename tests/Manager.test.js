@@ -1,6 +1,13 @@
 const Manager = require("../src/lib/Manager");
 
 describe("Manager Class", () => {
+  const manager = new Manager({
+    name: "Fahra",
+    id: "077",
+    email: "fahra@fahra.com",
+    officeNumber: "89898",
+  });
+
   test("should be an instance of Manager", () => {
     const expected = "Manager";
     const instance = new Manager("Manager");
@@ -9,26 +16,26 @@ describe("Manager Class", () => {
   });
 
   test("should return the expected name", () => {
-    const name = Manager.getName();
-    const expected = Manager.name;
-    expect(name).toEqual(expected);
+    const expected = "Fahra";
+    const actual = manager.getName("Fahra");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected id", () => {
-    const id = Manager.getId();
-    const expected = Manager.id;
-    expect(id).toEqual(expected);
+    const expected = "077";
+    const actual = manager.getId("077");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected email", () => {
-    const email = Manager.getEmail();
-    const expected = Manager.email;
-    expect(email).toEqual(expected);
+    const expected = "fahra@fahra.com";
+    const actual = manager.getEmail("fahra@fahra.com");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the office number ", () => {
-    const officeNumber = Manager.getOfficeNumber();
-    const expected = Manager.officeNumber;
-    expect(officeNumber).toEqual(expected);
+    const expected = "89898";
+    const actual = manager.getOfficeNumber("89898");
+    expect(actual).toEqual(expected);
   });
 });
