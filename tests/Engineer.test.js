@@ -1,34 +1,39 @@
 const Engineer = require("../src/lib/Engineer");
 
 describe("Engineer Class", () => {
-  const actual = new Engineer();
-
-  test("should be an instance of Engineer", () => {
-    const actual = new Engineer();
-    expect(actual).toBeInstanceOf(Engineer);
+  test("should be an instance of Engineer ", () => {
+    const expected = "Engineer";
+    const instance = new Engineer("Engineer");
+    const actual = instance.getRole();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected name", () => {
-    const name = actual.getName();
-    const expected = Engineer.name;
-    expect(name).toEqual(expected);
+    const instance = new Engineer();
+    const expected = "Leanne";
+    const actual = instance.getName("Leanne");
+    expect(actual).toEqual(expected);
+    expect(instance).toBeInstanceOf(Engineer);
   });
 
   test("should return the expected id", () => {
-    const id = actual.getId();
-    const expected = Engineer.id;
-    expect(id).toEqual(expected);
+    const engineer = new Engineer();
+    const expected = "024";
+    const actual = engineer.getId("024");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected email", () => {
-    const email = actual.getEmail();
-    const expected = Engineer.email;
-    expect(email).toEqual(expected);
+    const engineer = new Engineer();
+    const expected = "Leanne@leanne.com";
+    const actual = engineer.getEmail("Leanne@leanne.com");
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected github username", () => {
-    const github = actual.getGithub();
-    const expected = Engineer.github;
-    expect(github).toEqual(expected);
+    const engineer = new Engineer();
+    const expected = "LennyG";
+    const actual = engineer.getGithub("LennyG");
+    expect(actual).toEqual(expected);
   });
 });

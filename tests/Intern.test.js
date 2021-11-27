@@ -1,9 +1,11 @@
 const Intern = require("../src/lib/Intern");
 
-describe("Intern class", () => {
+describe("Intern Class", () => {
   test("should be an instance of Intern", () => {
-    const actual = new Intern();
-    expect(actual).toBeInstanceOf(Intern);
+    const expected = "Intern";
+    const instance = new Intern("Intern");
+    const actual = instance.getRole();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected name", () => {

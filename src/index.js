@@ -2,14 +2,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { Manager, Engineer, Intern } = require("./lib");
-const { userInfo } = require("os");
 
 // function to validate that a number has been used for the id and office number
 const validateInput = (input) => {
   if (!input) {
     return "Please enter a valid response";
   } else {
-    return;
+    return true;
   }
 };
 

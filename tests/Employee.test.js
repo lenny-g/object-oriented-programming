@@ -1,28 +1,31 @@
 const Employee = require("../src/lib/Employee");
 
 describe("Employee Class", () => {
-  const actual = new Employee();
-
   test("should be an instance of Employee", () => {
-    const actual = new Employee(Employee);
-    expect(actual).toBeInstanceOf(Employee);
+    const expected = "Employee";
+    const instance = new Employee("Employee");
+    const actual = instance.getRole();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected name", () => {
-    const name = actual.getName();
-    const expected = Employee.name;
-    expect(name).toEqual(expected);
+    const expected = "Leanne Gallagher";
+    const instance = Employee.name(" Leanne Gallagher");
+    const actual = instance.getName();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected id", () => {
-    const id = actual.getId();
-    const expected = Employee.id;
-    expect(id).toEqual(expected);
+    const expected = "024678";
+    const instance = new Employee("id: 024678");
+    const actual = instance.getId();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected email", () => {
-    const email = actual.getEmail();
-    const expected = Employee.email;
-    expect(email).toEqual(expected);
+    const expected = "Leanne_Gallag@live.co.uk";
+    const instance = new Employee("email: Leanne_Gallag@live.co.uk");
+    const actual = instance.getEmail();
+    expect(actual).toEqual(expected);
   });
 });

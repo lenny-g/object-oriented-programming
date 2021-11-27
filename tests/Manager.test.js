@@ -1,9 +1,11 @@
 const Manager = require("../src/lib/Manager");
 
-describe("Manager class", () => {
+describe("Manager Class", () => {
   test("should be an instance of Manager", () => {
-    const actual = new Manager();
-    expect(actual).toBeInstanceOf(Manager);
+    const expected = "Manager";
+    const instance = new Manager("Manager");
+    const actual = instance.getRole();
+    expect(actual).toEqual(expected);
   });
 
   test("should return the expected name", () => {
